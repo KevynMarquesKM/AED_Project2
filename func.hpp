@@ -92,20 +92,14 @@ Valores de Retorno:
     bool false - Se o jogador não ganhou
 */
 bool Board::isWinner(char player) const {
-    for (int i = 0; i < 3; ++i) {
-        if (tab[i][0] == player && tab[i][1] == player && tab[i][2] == player){
+    for(int i = 0; i < 3; i++){
+        if( (tab[i][0] == player && tab[i][1] == player && tab[i][2] == player) |
+            (tab[0][i] == player && tab[1][i] == player && tab[2][i] == player) |
+            (tab[0][0] == player && tab[1][1] == player && tab[2][2] == player) |
+            (tab[0][2] == player && tab[1][1] == player && tab[2][0] == player)){
             return true;
-        };
-        if (tab[0][i] == player && tab[1][i] == player && tab[2][i] == player){
-            return true;
-        };
-        if (tab[0][0] == player && tab[1][1] == player && tab[2][2] == player){
-            return true;
-        };
-        if (tab[0][2] == player && tab[1][1] == player && tab[2][0] == player){
-            return true;
-        };
-    };
+        }
+    }
 
     //Se o jogador não tiver ganho
     return false;     
